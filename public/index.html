@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenDART Company Explorer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="content">
+        <section class="search-card">
+          <form id="search-form" class="search-form">
+            <div class="field-group field-group-wide">
+              <label for="query">기업명 / 종목코드 / 고유번호 (콤마로 여러 개 입력 가능)</label>
+              <input
+                id="query"
+                name="query"
+                type="text"
+                autocomplete="off"
+                placeholder="예: 현대로템, 현대모비스, 현대위아"
+              />
+              <div id="suggestions" class="suggestions"></div>
+            </div>
+
+            <div class="field-group">
+              <label for="bsns-year">사업연도</label>
+              <select id="bsns-year" name="bsns_year">
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="reprt-code">보고서</label>
+              <select id="reprt-code" name="reprt_code">
+                <option value="11011">사업보고서</option>
+                <option value="11012">반기보고서</option>
+                <option value="11013">1분기보고서</option>
+                <option value="11014">3분기보고서</option>
+              </select>
+            </div>
+
+            <div class="field-group field-group-wide">
+              <label>지표 분류</label>
+              <div class="chip-row">
+                <label class="chip-option"><input type="checkbox" name="idx_cl_codes" value="M210000" checked /> 수익성</label>
+                <label class="chip-option"><input type="checkbox" name="idx_cl_codes" value="M220000" checked /> 안정성</label>
+                <label class="chip-option"><input type="checkbox" name="idx_cl_codes" value="M230000" checked /> 성장성</label>
+                <label class="chip-option"><input type="checkbox" name="idx_cl_codes" value="M240000" checked /> 활동성</label>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-button" type="submit">데이터 조회</button>
+              <button class="ghost-button" id="download-json" type="button" disabled>원본 JSON 다운로드</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="status-grid" id="status-grid">
+          <article class="status-card">
+            <span>현재 상태</span>
+            <strong id="status-text">검색 준비 완료</strong>
+          </article>
+          <article class="status-card">
+            <span>선택 기업</span>
+            <strong id="company-text">-</strong>
+          </article>
+          <article class="status-card">
+            <span>조회 기준</span>
+            <strong id="request-text">2025 / 사업보고서</strong>
+          </article>
+        </section>
+
+        <section class="results-card">
+          <div class="tabs" id="tabs">
+            <button class="tab-button active" data-tab="overview">조회 요약</button>
+            <button class="tab-button" data-tab="single">주요 재무항목</button>
+            <button class="tab-button" data-tab="multi">재무항목 상세</button>
+            <button class="tab-button" data-tab="index">재무비율 지표</button>
+            <button class="tab-button" data-tab="raw">원본 JSON</button>
+          </div>
+
+          <div class="tab-panel active" id="tab-overview">
+            <div id="overview-panel" class="empty-state">검색 결과가 여기에 표시됩니다.</div>
+          </div>
+
+          <div class="tab-panel" id="tab-single">
+            <div class="panel-tools">
+              <input id="single-filter" type="text" placeholder="계정명 필터" />
+            </div>
+            <div id="single-table" class="table-wrap"></div>
+          </div>
+
+          <div class="tab-panel" id="tab-multi">
+            <div class="panel-tools">
+              <input id="multi-filter" type="text" placeholder="계정명 필터" />
+            </div>
+            <div id="multi-table" class="table-wrap"></div>
+          </div>
+
+          <div class="tab-panel" id="tab-index">
+            <div class="panel-tools">
+              <input id="index-filter" type="text" placeholder="지표명 필터" />
+            </div>
+            <div id="index-table" class="table-wrap"></div>
+          </div>
+
+          <div class="tab-panel" id="tab-raw">
+            <pre id="raw-json" class="json-viewer">검색 결과가 여기에 표시됩니다.</pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
