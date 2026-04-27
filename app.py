@@ -4,7 +4,7 @@ import os
 from functools import lru_cache
 from pathlib import Path
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect, request
 
 from server import (
     DEFAULT_CORPCODE_XML,
@@ -20,6 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_CORPCODE_JSON = BASE_DIR / "data" / "corp_codes.json"
 
 app = Flask(__name__)
+
+
+@app.get("/")
+def home():
+    return redirect("/index.html", code=307)
 
 
 @lru_cache(maxsize=1)
