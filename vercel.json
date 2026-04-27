@@ -2,7 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "app.py": {
-      "maxDuration": 60
+      "maxDuration": 60,
+      "excludeFiles": "{static/**,public/**,run_local.sh,README.md,.env.example}"
     }
   }
 }

@@ -89,14 +89,10 @@ vercel --prod
 
 ### 3-1. GitHub에 올리기
 
-GitHub 웹에서 빈 저장소를 먼저 만든 뒤 아래 순서로 올리면 됩니다.
+이 폴더는 이미 Git 저장소로 준비되어 있으므로, GitHub 웹에서 빈 저장소만 만든 뒤 아래 순서로 올리면 됩니다.
 
 ```bash
 cd /Users/hwanjinchoi/Documents/opendart-search-web
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
 git remote add origin https://github.com/YOUR_ID/YOUR_REPO.git
 git push -u origin main
 ```
