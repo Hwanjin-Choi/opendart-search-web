@@ -6,6 +6,11 @@
 - `fnlttMultiAcnt.json`
 - `fnlttSinglIndx.json`
 
+## 저장소
+
+- GitHub: `https://github.com/Hwanjin-Choi/opendart-search-web`
+- Vercel Import: `https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHwanjin-Choi%2Fopendart-search-web&env=DART_API_KEY`
+
 ## 특징
 
 - 기업명, 종목코드, 고유번호로 자유 검색
