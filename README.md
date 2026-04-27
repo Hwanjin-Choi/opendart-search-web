@@ -54,13 +54,14 @@ http://127.0.0.1:8765
 
 ### 1. 프로젝트 루트
 
-버셀에서 프로젝트를 연결할 때 루트 디렉터리를 아래로 잡아주세요.
+이 폴더 자체를 GitHub 저장소 루트로 올리는 기준입니다.
 
 ```text
 /Users/hwanjinchoi/Documents/opendart-search-web
 ```
 
-Git 저장소를 연결할 경우에도 `Root Directory`를 `opendart-search-web`로 설정하면 됩니다.
+이 기준으로 저장소를 만들면 Vercel의 `Root Directory`는 기본값(`/`) 그대로 두면 됩니다.
+만약 더 큰 모노레포 안에 `opendart-search-web`을 하위 폴더로 넣는 경우에만 `Root Directory`를 `opendart-search-web`로 설정하면 됩니다.
 
 ### 2. 환경 변수
 
@@ -106,7 +107,7 @@ git push -u origin main
 
 1. Vercel Dashboard에서 `Add New Project`
 2. 방금 올린 GitHub 저장소 선택
-3. Root Directory를 `opendart-search-web`로 지정
+3. Root Directory는 기본값(`/`) 유지
 4. Environment Variables에 `DART_API_KEY` 추가
 5. Deploy 실행
 
